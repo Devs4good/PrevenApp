@@ -9,6 +9,10 @@ a:hover {
   color: #fff;
 }
 
+.option {
+  padding-top: 2em;
+}
+
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
