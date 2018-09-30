@@ -99,6 +99,7 @@ body {
 .img-circle {
   max-width: 200px;
   border-radius: 50%;
+  filter: invert(100%);
 }
 
 /*
