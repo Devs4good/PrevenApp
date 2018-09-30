@@ -3,7 +3,7 @@ var correctAnswers = []
 var currentQuestion = null;
 var currentPoints = 0;
 var numberOfAnswersRight  = 0;
-
+var level = 1;
 
 
 function loadQuestion() {
@@ -49,6 +49,10 @@ function checkAnswer(currentResponse, selectedBtn){
 		currentPoints += 10;
 		$(selectedBtn).css('color','green');
 		numberOfAnswersRight++;
+		if (numberOfAnswersRight % 3 == 0) {
+			alert("Pasaste de nivel")
+			level++	
+		}
 
 	} else {
 		$(selectedBtn).css('color','red');
