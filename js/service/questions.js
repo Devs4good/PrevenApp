@@ -126,7 +126,14 @@ function loadQuestions() {
 	  		ilegalQuestions.push(q)
 		}
 	}
-	
+}
+
+function getRandomQuestion(){
+	if (Math.random() <= 0.5) {
+		return legalQuestions.pop()	
+	} else {
+		return ilegalQuestions.pop()
+	}
 }
 
 function getNextLegalQuestion(){
