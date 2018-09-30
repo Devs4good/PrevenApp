@@ -30,6 +30,20 @@ function loadIlegalQuestion() {
 	$("#ilegal-false").removeAttr('disabled');
 }
 
+function loadAzarQuestion() {
+	currentQuestion = getRandomQuestion();
+	$("#azar-question").text(currentQuestion['assertion']);
+	$("#azar-question-info").text(currentQuestion['info']);
+	$("#azar-question-info").css('display', 'none');
+	
+	$("#azar-true").css('color','black')	
+	$("#azar-true").removeAttr('disabled');
+	
+	$("#azar-false").css('color','black')
+	$("#azar-false").removeAttr('disabled');
+}
+
+
 $("#legal-trivia").ready(function() {
 	loadLegalQuestion()
 });
@@ -45,6 +59,17 @@ $("#ilegal-trivia").ready(function() {
 $("#ilegal-next-btn").click(function() {
 	loadIlegalQuestion()
 });
+
+
+$("#azar-trivia").ready(function() {
+	loadAzarQuestion()
+});
+
+$("#azar-next-btn").click(function() {
+	loadAzarQuestion()
+});
+
+
 
 
 $("#legal-true").click(function() {
@@ -74,6 +99,20 @@ $("#ilegal-false").click(function() {
 });
 
 
+$("#azar-true").click(function() {
+	currentResponse = "VERDADERO";
+	$("#azar-question-info").css('display', 'block');
+	checkAnswer(currentResponse,"#azar-true")	
+});
+
+
+$("#azar-false").click(function() {
+	currentResponse = "FALSO";
+	$("#azar-question-info").css('display', 'block');
+	checkAnswer(currentResponse,"#azar-false")
+});
+
+
 function checkAnswer(currentResponse, selectedBtn){
 	if (currentQuestion['answer'] == currentResponse) {
 		currentPoints += 10;
@@ -91,4 +130,7 @@ function checkAnswer(currentResponse, selectedBtn){
 
 	$("#ilegal-true").attr('disabled','disabled');
 	$("#ilegal-false").attr('disabled','disabled');
+
+	$("#azar-true").attr('disabled','disabled');
+	$("#azar-false").attr('disabled','disabled');
 }
