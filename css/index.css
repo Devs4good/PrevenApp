@@ -18,7 +18,7 @@ a:hover {
 .btn-secondary:hover,
 .btn-secondary:focus {
   color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
+  text-shadow: black; /* Prevent inheritance from `body` */
   background-color: #fff;
   border: .05rem solid #fff;
 }
@@ -31,13 +31,13 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #ACF284;
+  background-image: url("../images/fondo.jpg");
 }
 
 body {
   display: -ms-flexbox;
   display: flex;
-  color: #fff;
+  color: #f9f9f9;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
@@ -46,6 +46,13 @@ body {
   max-width: 42em;
 }
 
+.card {
+  color: black;  
+}
+
+.card button {
+  color: gray;
+}
 
 /*
  * Header
