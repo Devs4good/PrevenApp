@@ -6,7 +6,7 @@ var numberOfAnswersRight  = 0;
 var level = 1;
 
 
-function loadQuestion() {
+function loadLegalQuestion() {
 	currentQuestion = getNextLegalQuestion();
 	$("#legal-question").text(currentQuestion['assertion']);
 	$("#legal-question-info").text(currentQuestion['info']);
@@ -17,16 +17,35 @@ function loadQuestion() {
 	
 	$("#legal-false").css('color','black')
 	$("#legal-false").removeAttr('disabled');
-	
 }
 
+function loadIlegalQuestion() {
+	currentQuestion = getNextIlegalQuestion();
+	$("#ilegal-question").text(currentQuestion['assertion']);
+	$("#ilegal-question-info").text(currentQuestion['info']);
+	$("#ilegal-question-info").css('display', 'none');
+	
+	$("#ilegal-true").css('color','black')	
+	$("#ilegal-true").removeAttr('disabled');
+	
+	$("#ilegal-false").css('color','black')
+	$("#ilegal-false").removeAttr('disabled');
+}
 
 $("#legal-trivia").ready(function() {
-	loadQuestion()
+	loadLegalQuestion()
 });
 
 $("#legal-next-btn").click(function() {
-	loadQuestion()
+	loadLegalQuestion()
+});
+
+$("#ilegal-trivia").ready(function() {
+	loadIlegalQuestion()
+});
+
+$("#ilegal-next-btn").click(function() {
+	loadIlegalQuestion()
 });
 
 
@@ -37,10 +56,23 @@ $("#legal-true").click(function() {
 });
 
 
-$( "#legal-false" ).click(function() {
+$("#legal-false").click(function() {
 	currentResponse = "FALSO";
 	$("#legal-question-info").css('display', 'block');
 	checkAnswer(currentResponse,"#legal-false")
+});
+
+$("#ilegal-true").click(function() {
+	currentResponse = "VERDADERO";
+	$("#ilegal-question-info").css('display', 'block');
+	checkAnswer(currentResponse,"#ilegal-true")	
+});
+
+
+$("#ilegal-false").click(function() {
+	currentResponse = "FALSO";
+	$("#ilegal-question-info").css('display', 'block');
+	checkAnswer(currentResponse,"#ilegal-false")
 });
 
 
@@ -60,4 +92,6 @@ function checkAnswer(currentResponse, selectedBtn){
 	$("#legal-true").attr('disabled','disabled');
 	$("#legal-false").attr('disabled','disabled');
 
+	$("#ilegal-true").attr('disabled','disabled');
+	$("#ilegal-false").attr('disabled','disabled');
 }
