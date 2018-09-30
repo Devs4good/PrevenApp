@@ -32,6 +32,7 @@ html,
 body {
   height: 100%;
   background-image: url("../images/fondo.jpg");
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
