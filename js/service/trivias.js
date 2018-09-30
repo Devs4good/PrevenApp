@@ -2,7 +2,7 @@ var correctAnswers = []
 
 var currentQuestion = null;
 var currentPoints = 0;
-var numberOfAnswers  = 0;
+var numberOfAnswersRight  = 0;
 
 
 
@@ -48,10 +48,12 @@ function checkAnswer(currentResponse, selectedBtn){
 	if (currentQuestion['answer'] == currentResponse) {
 		currentPoints += 10;
 		$(selectedBtn).css('color','green');
+		numberOfAnswersRight++;
+
 	} else {
 		$(selectedBtn).css('color','red');
 	}
-	$("#legal-false").attr('disabled','disabled');
+	$("#legal-true").attr('disabled','disabled');
 	$("#legal-false").attr('disabled','disabled');
 
 }
