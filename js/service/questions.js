@@ -129,4 +129,23 @@ function loadQuestions() {
 	
 }
 
+function getNextLegalQuestion(){
+	return legalQuestions.pop()
+}
+
+
+function getNextIlegalQuestion(){
+	return ilegalQuestions.pop()
+}
+
+function getLegalQuestions(){
+	return legalQuestions
+}
+
+function getIlegalQuestions(){
+	return ilegalQuestions
+}
+/**
+Load questions
+*/
 loadQuestions()
