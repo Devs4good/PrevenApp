@@ -11,10 +11,8 @@ function loadLegalQuestion() {
 	$("#legal-question").text(currentQuestion['assertion']);
 	$("#legal-question-info").text(currentQuestion['info']);
 	$("#legal-question-info").css('display', 'none');
-	
 	$("#legal-true").css('color','black')	
 	$("#legal-true").removeAttr('disabled');
-	
 	$("#legal-false").css('color','black')
 	$("#legal-false").removeAttr('disabled');
 }
@@ -85,7 +83,6 @@ function checkAnswer(currentResponse, selectedBtn){
 			alert("Pasaste de nivel")
 			level++	
 		}
-
 	} else {
 		$(selectedBtn).css('color','red');
 	}
