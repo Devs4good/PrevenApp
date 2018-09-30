@@ -1,7 +1,20 @@
-var legalQuestions = []
-var ilegalQuestions = []
 var correctAnswers = []
 
+var currentAnswer = null;
+
+
+$( "#legal-trivia" ).ready(function() {
+	alert(legalQuestions)
+});
+
+$( "#legal-netx-btn" ).click(function() {
+  alert( "Handler for .click() called." );
+  checkAnswer()
+});
+
+function checkAnswer(){
+
+}
 
 function getNextLegalQuestion(){
 	return legalQuestions.pop()
@@ -18,18 +31,4 @@ function getLegalQuestions(){
 
 function getIlegalQuestions(){
 	return ilegalQuestions
-}
-
-
-function loadQuestions(questions) {
-	for (var i = 1; i < questions.length; i++) {
-		question = questions[i]
-		var q = { 'assertion':question[0], 'answer':question[1],'info':question[2], 'category':question[3]}
-		if (question[3] == 'LEGAL') {
-			legalQuestions.push(q)	
-		} else {
-	  		ilegalQuestions.push(q)
-		}
-	}
-	
 }

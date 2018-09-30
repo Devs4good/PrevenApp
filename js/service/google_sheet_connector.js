@@ -11,6 +11,7 @@ var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
+var spreadsheetsApi = undefined;
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -36,7 +37,7 @@ function initClient() {
     // Listen for sign-in state changes.
 
     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
+    spreadsheetsApi = gapi.client.sheets.spreadsheets.values;
     // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     authorizeButton.onclick = handleAuthClick;
@@ -51,8 +52,8 @@ function initClient() {
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
-    getResults();
     signoutButton.style.display = 'block';
+    getResults();
   
   } else {
     authorizeButton.style.display = 'block';
@@ -90,8 +91,9 @@ function appendPre(message) {
  * Print the names and majors of students in a sample spreadsheet:
  * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  */
+
 function getResults() {
-  gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetsApi.get({
     spreadsheetId: '11FTTtqfuziu4qg1F6t9VC_DRxry2Lzfjblq3Wjje35g',
     range: 'Hoja 1',
   }).then(function(response) {
@@ -104,4 +106,24 @@ function getResults() {
   }, function(response) {
     appendPre('Error: ' + response.result.error.message);
   });
+}
+
+function getData(){
+
+  let result = new Promise((resolve, reject) => {
+    spreadsheetsApi.get({
+      spreadsheetId: '11FTTtqfuziu4qg1F6t9VC_DRxry2Lzfjblq3Wjje35g',
+      range: 'Hoja 1',
+    }).then(function(response) {
+      var range = response.result;
+      if (range.values.length > 0) {
+        resolve(range.values)
+      } else {
+        reject('No data found.');
+      }
+    }, function(response) {
+      reject('Error: ' + response.result.error.message);
+    });  
+  });
+  return result
 }

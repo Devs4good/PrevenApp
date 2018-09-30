@@ -60,8 +60,6 @@
         <div class="inner">
           <p> <a href="https://getbootstrap.com/"></a><a href="https://twitter.com/mdo"></a></p>
         </div>
-        <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
       </footer>
     </div>
 
@@ -75,7 +73,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+      onreadystatechange="if (this.readyState === 'complete') this.getResults()">
     </script>
     <script src="js/service/google_sheet_connector.js"></script>
     <script src="js/service/trivias.js"></script>
